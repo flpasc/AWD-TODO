@@ -4,7 +4,7 @@ import Layout from '@/components/Layout/Layout'
 import MainContainer from '@/components/Navigation/MainContainer'
 import TaskList from '@/components/TaskList/TaskList'
 import useSWR from 'swr'
-import { Spinner } from '@chakra-ui/react'
+import { Box, Heading, Spinner } from '@chakra-ui/react'
 import { useTaskStore } from '@/store'
 import { TaskProps } from '@/types/TaskProps'
 
