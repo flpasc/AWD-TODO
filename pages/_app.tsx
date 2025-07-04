@@ -3,6 +3,7 @@ import { ChakraProvider, theme, ColorModeScript } from '@chakra-ui/react'
 import { fonts } from '../lib/fonts'
 import { SWRConfig } from 'swr'
 import { AppProps } from 'next/app'
+import { FC } from 'react'
 
 const fetcher = (url: string): Promise<> =>
 	fetch(url).then((response) => response.json())
