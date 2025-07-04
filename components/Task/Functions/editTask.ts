@@ -1,5 +1,5 @@
 export async function editTask(
-	taskId: number,
+	taskId: string,
 	taskTitle: string,
 ): Promise<void> {
 	const response = await fetch(`/api/tasks/${taskId}`, {

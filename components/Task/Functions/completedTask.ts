@@ -1,4 +1,6 @@
-export async function completedTask(taskId: number): Promise<void> {
+import { TaskProps } from '@/types/TaskProps'
+
+export async function completedTask(taskId: string): Promise<TaskProps> {
 	return await fetch(`/api/tasks/${taskId}`, {
 		method: 'PATCH',
 		headers: {
