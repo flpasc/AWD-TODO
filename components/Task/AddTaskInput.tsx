@@ -9,19 +9,14 @@ export default function AddTaskInput({ afterSubmit }: AddTaskProps) {
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
-		const formData = new FormData(event.currentTarget)
+		const form = event.currentTarget
+		const formData = new FormData(form)
 		const taskTitle: string = formData.get('title') as string
 
 		try {
+			form?.reset()
 			await AddTask(taskTitle)
 			mutate('/api/tasks')
-
-			const inputElement = event.currentTarget.elements.namedItem(
-				'title',
-			) as HTMLInputElement
-			inputElement && inputElement.focus()
-
-			event.currentTarget.reset()
 
 			// with this, we can let the caller know that submit has been successfully handled
 			if (afterSubmit && typeof afterSubmit === 'function') {

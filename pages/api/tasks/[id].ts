@@ -1,53 +1,57 @@
-import Task from "@/db/models/Task";
-import dbConnect from "@/db/connect";
+import Task from '@/db/models/Task'
+import dbConnect from '@/db/connect'
+import { NextApiRequest, NextApiResponse } from 'next'
 
-export default async function handler(request, response) {
-  const { id } = request.query;
+export default async function handler(
+	request: NextApiRequest,
+	response: NextApiResponse,
+) {
+	const { id } = request.query
 
-  if (!id) {
-    return;
-  }
-  await dbConnect();
+	if (!id) {
+		return
+	}
+	await dbConnect()
 
-  if (request.method === "DELETE") {
-    await Task.findByIdAndDelete(id);
+	if (request.method === 'DELETE') {
+		await Task.findByIdAndDelete(id)
 
-    response.status(200).json({ message: "Success!" });
-  }
+		response.status(200).json({ message: 'Success!' })
+	}
 
-  if (request.method === "PUT") {
-    const task = await Task.findById(id);
+	if (request.method === 'PUT') {
+		const task = await Task.findById(id)
 
-    if (!task) {
-      response.status(404).json({ status: "Task not found" });
-      return;
-    }
+		if (!task) {
+			response.status(404).json({ status: 'Task not found' })
+			return
+		}
 
-    await Task.findByIdAndUpdate(id, {
-      $set: { title: request.body.title },
-    });
+		await Task.findByIdAndUpdate(id, {
+			$set: { title: request.body.title },
+		})
 
-    response.status(200).json({
-      status: `Task ${id} was successfully edited!`,
-    });
-  }
+		response.status(200).json({
+			status: `Task ${id} was successfully edited!`,
+		})
+	}
 
-  if (request.method === "PATCH") {
-    let task = await Task.findById(id);
+	if (request.method === 'PATCH') {
+		let task = await Task.findById(id)
 
-    if (!task) {
-      response.status(404).json({ status: "Task not found" });
-      return;
-    }
+		if (!task) {
+			response.status(404).json({ status: 'Task not found' })
+			return
+		}
 
-    task = await Task.findByIdAndUpdate(
-      id,
-      {
-        $set: { completed: !task.completed },
-      },
-      { new: true }
-    );
+		task = await Task.findByIdAndUpdate(
+			id,
+			{
+				$set: { completed: !task.completed },
+			},
+			{ new: true },
+		)
 
-    response.status(200).json(task);
-  }
+		response.status(200).json(task)
+	}
 }

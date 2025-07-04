@@ -152,7 +152,7 @@ export default function TaskList({ tasks }: TaskListProps) {
 								defaultValue={task.title}
 								onSubmit={(nextValue) => handleEditTask(task._id, nextValue)}
 							>
-								<EditablePreview as={task.completed ? 'del' : ''} />
+								<EditablePreview as={task.completed ? 'del' : 'span'} />
 								<Input
 									as={EditableInput}
 									focusBorderColor='teal.400'
