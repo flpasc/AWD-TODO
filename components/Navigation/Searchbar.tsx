@@ -11,14 +11,16 @@ import { useState } from 'react'
 
 export default function Search() {
 	const setSearchTerm = useTaskStore((state) => state.setSearchTerm)
-	const [inputValue, setInputValue] = useState('')
+	const [inputValue, setInputValue] = useState<string>('')
 
-	const handleSearchChange = (event) => {
+	const handleSearchChange = (
+		event: React.ChangeEvent<HTMLInputElement>,
+	): void => {
 		setInputValue(event.target.value)
 		setSearchTerm(event.target.value)
 	}
 
-	const handleResetSearch = () => {
+	const handleResetSearch = (): void => {
 		setInputValue('')
 		setSearchTerm('')
 	}

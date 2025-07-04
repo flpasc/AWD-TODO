@@ -5,7 +5,7 @@ import { SWRConfig } from 'swr'
 import { AppProps } from 'next/app'
 import { FC } from 'react'
 
-const fetcher = (url: string): Promise<> =>
+const fetcher = (url: string): Promise<any> =>
 	fetch(url).then((response) => response.json())
 
 export default function App({ Component, pageProps }: AppProps) {

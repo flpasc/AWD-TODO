@@ -1,5 +1,4 @@
 import { useTaskStore } from '@/store'
-import { TaskStoreProps } from '@/types/TastStoreProps'
 import { FormControl, FormLabel, Switch } from '@chakra-ui/react'
 
 export default function FunMode() {
