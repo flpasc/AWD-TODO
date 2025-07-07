@@ -3,9 +3,27 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 const tasks = [
-	{ _id: '1', title: 'Task 1', completed: false },
-	{ _id: '2', title: 'Task 2', completed: false },
-	{ _id: '3', title: 'Task 3', completed: false },
+	{
+		_id: '1',
+		title: 'Task 1',
+		completed: false,
+		created_at: new Date(),
+		updated_at: new Date(),
+	},
+	{
+		_id: '2',
+		title: 'Task 2',
+		completed: false,
+		created_at: new Date(),
+		updated_at: new Date(),
+	},
+	{
+		_id: '3',
+		title: 'Task 3',
+		completed: false,
+		created_at: new Date(),
+		updated_at: new Date(),
+	},
 ]
 
 jest.mock('../Task/functions/completedTask')

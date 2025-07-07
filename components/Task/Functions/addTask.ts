@@ -7,6 +7,10 @@ export default async function AddTask(taskTitle: string): Promise<void> {
 			body: JSON.stringify(taskTitle),
 		})
 	} catch (error) {
-		console.log('ERROR !!')
+		if (error instanceof Error) {
+			console.error('AddTask error: ', error.message)
+		} else {
+			console.error('Unkown error: ', error)
+		}
 	}
 }

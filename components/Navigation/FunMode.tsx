@@ -2,10 +2,10 @@ import { useTaskStore } from '@/store'
 import { FormControl, FormLabel, Switch } from '@chakra-ui/react'
 
 export default function FunMode() {
-	const [funMode, toggleFunMode] = useTaskStore((state) => [
-		state.funMode,
-		state.toggleFunMode,
-	])
+	// is this necessary to type here because they already are infered byt the store
+	const [funMode, toggleFunMode]: [boolean, () => void] = useTaskStore(
+		(state) => [state.funMode, state.toggleFunMode],
+	)
 
 	return (
 		<FormControl

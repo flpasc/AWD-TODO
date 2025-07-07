@@ -7,10 +7,12 @@ import { AddTaskProps } from '@/types/AddTaskProps'
 export default function AddTaskInput({ afterSubmit }: AddTaskProps) {
 	const { mutate } = useSWRConfig()
 
-	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (
+		event: React.FormEvent<HTMLFormElement>,
+	): Promise<void> => {
 		event.preventDefault()
-		const form = event.currentTarget
-		const formData = new FormData(form)
+		const form: HTMLFormElement = event.currentTarget
+		const formData: FormData = new FormData(form)
 		const taskTitle: string = formData.get('title') as string
 
 		try {

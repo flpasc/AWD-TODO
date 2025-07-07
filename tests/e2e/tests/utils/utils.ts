@@ -1,4 +1,4 @@
-const TODO_ITEMS = [
+const TODO_ITEMS: string[] = [
 	'book a doctors appointment',
 	'Take a 10-minute walk around your neighborhood.',
 	'Write a gratitude list with five things you appreciate.',

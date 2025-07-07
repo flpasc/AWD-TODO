@@ -7,10 +7,12 @@ import {
 } from '@chakra-ui/react'
 import { Search2Icon } from '@chakra-ui/icons'
 import { useTaskStore } from '@/store'
-import { useState } from 'react'
+import { Dispatch, useState } from 'react'
 
 export default function Search() {
-	const setSearchTerm = useTaskStore((state) => state.setSearchTerm)
+	const setSearchTerm: (term: string) => void = useTaskStore(
+		(state) => state.setSearchTerm,
+	)
 	const [inputValue, setInputValue] = useState<string>('')
 
 	const handleSearchChange = (

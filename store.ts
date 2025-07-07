@@ -22,7 +22,7 @@ export const useTaskStore = create<TaskStoreProps>()(
 			countCompletedTasks: 0,
 			countActiveTasks: 0,
 
-			setCountCompletedTasks: () => {
+			setCountCompletedTasks: (): void => {
 				const countingTasks = get().countingTasks
 				const count = countingTasks.reduce(
 					(count, task) => (task.completed ? count + 1 : count),
@@ -31,7 +31,7 @@ export const useTaskStore = create<TaskStoreProps>()(
 				set({ countCompletedTasks: count })
 			},
 
-			setActiveTasks: () => {
+			setActiveTasks: (): void => {
 				const countingTasks = get().countingTasks
 				const countCompleted = countingTasks.reduce(
 					(count, task) => (task.completed ? count + 1 : count),

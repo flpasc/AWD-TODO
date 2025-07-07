@@ -18,13 +18,13 @@ import { useTaskStore } from '@/store'
 import { TaskProps } from '@/types/TaskProps'
 
 export default function ListsSection() {
-	const activeList = useTaskStore((state) => state.activeList)
-	let countingTasks = useTaskStore((state) => state.countingTasks)
+	const activeList: string | null = useTaskStore((state) => state.activeList)
+	let countingTasks: TaskProps[] = useTaskStore((state) => state.countingTasks)
 
-	const numberOfDoneTasks = countingTasks.filter(
+	const numberOfDoneTasks: number = countingTasks.filter(
 		(task: TaskProps) => task.completed,
 	).length
-	const numberOfUpcomingTasks = countingTasks.length - numberOfDoneTasks
+	const numberOfUpcomingTasks: number = countingTasks.length - numberOfDoneTasks
 
 	return (
 		<>

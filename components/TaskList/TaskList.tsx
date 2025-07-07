@@ -25,15 +25,15 @@ import { TaskProps, TaskListProps } from '@/types/TaskProps'
 export default function TaskList({ tasks }: TaskListProps) {
 	const toast = useToast()
 	const { mutate } = useSWRConfig()
-	const funMode = useTaskStore((state) => state.funMode)
+	const funMode: boolean = useTaskStore((state) => state.funMode)
 	const confetti = new JSConfetti()
-	const searchTerm = useTaskStore((state) => state.searchTerm)
+	const searchTerm: string = useTaskStore((state) => state.searchTerm)
 
 	const filteredTasks = tasks.filter((task: TaskProps) =>
 		task.title.toLowerCase().includes(searchTerm.toLowerCase()),
 	)
 
-	const handleDeleteTask = async (taskId: string) => {
+	const handleDeleteTask = async (taskId: string): Promise<void> => {
 		try {
 			await deleteTask(taskId)
 			mutate('/api/tasks')
@@ -66,7 +66,10 @@ export default function TaskList({ tasks }: TaskListProps) {
 			}
 		}
 	}
-	const handleEditTask = async (taskId: string, nextValue: string) => {
+	const handleEditTask = async (
+		taskId: string,
+		nextValue: string,
+	): Promise<void> => {
 		try {
 			mutate(
 				'/api/tasks',
@@ -88,7 +91,7 @@ export default function TaskList({ tasks }: TaskListProps) {
 		}
 	}
 
-	const handleCompletedTask = async (taskId: string) => {
+	const handleCompletedTask = async (taskId: string): Promise<void> => {
 		try {
 			const task: TaskProps = await completedTask(taskId)
 			if (task.completed) {

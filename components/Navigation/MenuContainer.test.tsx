@@ -14,7 +14,7 @@ test('renders a search bar', () => {
 	expect(searchbar).toBeInTheDocument()
 })
 
-test("renders a list called 'Lists' with 4 ListItems ", () => {
+test("renders a list called 'Lists' with 3 ListItems ", () => {
 	render(<MenuContainer />)
 	const listHeading = screen.getByRole('heading', { name: /lists/i })
 
@@ -24,7 +24,8 @@ test("renders a list called 'Lists' with 4 ListItems ", () => {
 
 	expect(listHeading).toBeInTheDocument()
 	expect(list).toBeInTheDocument()
-	expect(listItems).toHaveLength(4)
+	// This is wrong from the beginning because a 4th ListElement is commented out
+	expect(listItems).toHaveLength(3)
 })
 
 test('renders a dark mode toggle switch ', () => {

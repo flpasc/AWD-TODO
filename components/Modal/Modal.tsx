@@ -16,11 +16,11 @@ import { useTaskStore } from '@/store'
 import AddTaskInput from '../Task/AddTaskInput'
 
 const SetupModal = () => {
-	const setupMode = useTaskStore((state) => state.setupMode)
-	const finishSetup = useTaskStore((state) => state.finishSetup)
+	const setupMode: boolean = useTaskStore((state) => state.setupMode)
+	const finishSetup: () => void = useTaskStore((state) => state.finishSetup)
 
 	const { isOpen, onClose } = useDisclosure({ defaultIsOpen: setupMode })
-	const closeWelcomeScreenAndFinishSetup = () => {
+	const closeWelcomeScreenAndFinishSetup = (): void => {
 		onClose()
 		finishSetup()
 	}

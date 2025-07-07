@@ -1,12 +1,12 @@
 import randomItem from './utils/utils'
 import { test, expect, Page } from '@playwright/test'
 
-test.beforeEach(async ({ page }: { page: Page }) => {
-	await page.goto('https://tasktango.vercel.app/')
-	await expect(page).toHaveTitle('TaskTango - Home Page')
-})
-
 test.describe('New Todo', () => {
+	test.beforeEach(async ({ page }: { page: Page }) => {
+		await page.goto('https://tasktango.vercel.app/')
+		await expect(page).toHaveTitle('TaskTango - Home Page')
+	})
+
 	test('Add a task and verify it appears in the list', async ({ page }) => {
 		// Wait for the new task input to appear
 		const newTaskInput = await page.waitForSelector(
