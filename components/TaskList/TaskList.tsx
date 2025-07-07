@@ -25,9 +25,9 @@ import { TaskProps, TaskListProps } from '@/types/TaskProps'
 export default function TaskList({ tasks }: TaskListProps) {
 	const toast = useToast()
 	const { mutate } = useSWRConfig()
-	const funMode: boolean = useTaskStore((state) => state.funMode)
+	const funMode = useTaskStore<boolean>((state) => state.funMode)
 	const confetti = new JSConfetti()
-	const searchTerm: string = useTaskStore((state) => state.searchTerm)
+	const searchTerm = useTaskStore<string>((state) => state.searchTerm)
 
 	const filteredTasks = tasks.filter((task: TaskProps) =>
 		task.title.toLowerCase().includes(searchTerm.toLowerCase()),
@@ -71,15 +71,16 @@ export default function TaskList({ tasks }: TaskListProps) {
 		nextValue: string,
 	): Promise<void> => {
 		try {
-			mutate(
+			mutate<TaskListProps>(
 				'/api/tasks',
 				(data) => {
-					return data.map((task: TaskProps) => {
-						if (task._id === taskId) {
-							return { ...task, title: nextValue }
-						}
-						return task
-					})
+					if (!data) return { tasks: [] }
+
+					return {
+						tasks: data.tasks.map((task) =>
+							task._id === taskId ? { ...task, title: nextValue } : task,
+						),
+					}
 				},
 				true,
 			)

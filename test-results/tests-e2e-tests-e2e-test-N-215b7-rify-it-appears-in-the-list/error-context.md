@@ -1,0 +1,102 @@
+# Page snapshot
+
+```yaml
+- heading "Menu" [level=5]
+- img
+- textbox "search"
+- heading "Lists" [level=2]
+- navigation:
+  - list:
+    - listitem:
+      - link "All Tasks 12":
+        - /url: /
+        - paragraph: All Tasks
+        - text: "12"
+    - listitem:
+      - link "Upcoming 6":
+        - /url: /upcoming
+        - paragraph: Upcoming
+        - text: "6"
+    - listitem:
+      - link "Done 6":
+        - /url: /done
+        - paragraph: Done
+        - text: "6"
+- group:
+  - text: Dark Mode
+  - checkbox "Dark Mode"
+- group:
+  - text: Fun Mode
+  - checkbox "Fun Mode"
+- heading "All Tasks" [level=3]
+- img
+- textbox "add New Task"
+- list:
+  - listitem:
+    - checkbox
+    - text: Write a gratitude list with five things you appreciate.
+    - button "Delete a task"
+    - separator
+  - listitem:
+    - checkbox
+    - text: Spend 15 minutes stretching or practicing yoga.
+    - button "Delete a task"
+    - separator
+  - listitem:
+    - checkbox [checked]
+    - deletion: book a doctors appointment
+    - button "Delete a task"
+    - separator
+  - listitem:
+    - checkbox
+    - text: Declutter a small area in your home, like a drawer or shelf.
+    - button "Delete a task"
+    - separator
+  - listitem:
+    - checkbox [checked]
+    - deletion: Listen to a podcast on a topic that interests you.
+    - button "Delete a task"
+    - separator
+  - listitem:
+    - checkbox
+    - text: Write a gratitude list with five things you appreciate.
+    - button "Delete a task"
+    - separator
+  - listitem:
+    - checkbox
+    - text: Declutter a small area in your home, like a drawer or shelf.
+    - button "Delete a task"
+    - separator
+  - listitem:
+    - checkbox
+    - text: Create a playlist of your favorite songs or discover new music.
+    - button "Delete a task"
+    - separator
+  - listitem:
+    - checkbox [checked]
+    - deletion: Take a few minutes to appreciate the beauty of nature around you.
+    - button "Delete a task"
+    - separator
+  - listitem:
+    - checkbox [checked]
+    - deletion: Do a quick workout routine, like jumping jacks or squats.
+    - button "Delete a task"
+    - separator
+  - listitem:
+    - checkbox [checked]
+    - deletion: Organize your computer desktop or files.
+    - button "Delete a task"
+    - separator
+  - listitem:
+    - checkbox [checked]
+    - deletion: Task Project
+    - button "Delete a task"
+    - separator
+- alert
+- region "Notifications-top"
+- region "Notifications-top-left"
+- region "Notifications-top-right"
+- region "Notifications-bottom-left"
+- region "Notifications-bottom"
+- region "Notifications-bottom-right"
+```
