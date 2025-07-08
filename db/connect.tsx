@@ -16,7 +16,7 @@ const MONGODB_URI: string = uri
  * during API Route usage.
  */
 declare global {
-	// QUESTION: why does let not work?
+	// QUESTION: why does let not work? (because let and const are block scoped!)
 	var mongoose: {
 		promise: Promise<Mongoose> | null
 		conn: Mongoose | null

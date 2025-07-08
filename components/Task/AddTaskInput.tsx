@@ -20,7 +20,6 @@ export default function AddTaskInput({ afterSubmit }: AddTaskProps) {
 			await AddTask(taskTitle)
 			mutate('/api/tasks')
 
-			// with this, we can let the caller know that submit has been successfully handled
 			if (afterSubmit && typeof afterSubmit === 'function') {
 				afterSubmit()
 			}
@@ -30,6 +29,7 @@ export default function AddTaskInput({ afterSubmit }: AddTaskProps) {
 			mutate('/api/tasks')
 		}
 	}
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<InputGroup>
